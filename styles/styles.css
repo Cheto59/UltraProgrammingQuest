@@ -1,0 +1,14 @@
+.container{
+    margin-top: 5%;
+    margin-left: 18%;
+    margin-right: 18%;
+}
+
+#codeEditor{
+    resize: none;
+}
+
+button{
+    width: 70px;
+    margin-left:85%;
+}
