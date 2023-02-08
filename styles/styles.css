@@ -1,14 +1,43 @@
-.container{
-    margin-top: 5%;
-    margin-left: 18%;
+body{
+    background-color: rgb(0, 58, 58);
+    display: inline-flex;  
+}
+
+.mainContainer{
+    margin-top: 2%;
+    margin-left: 2%;
     margin-right: 18%;
+    display: inline;
 }
 
-#codeEditor{
-    resize: none;
+.problemCreator{    
+    margin-top: 5%; 
 }
 
-button{
-    width: 70px;
-    margin-left:85%;
+#descriptionTextArea{
+    resize: none;   
+}
+
+#console{
+    resize: horizontal;
+    background-color: black;
+    color: white;
+    display: inline;
+}
+
+#addProblemButton{
+    width: 60px;
+    margin-left: 80%;
+}
+
+#runButton{
+    width: 80px;
+    display: inline,
+}
+
+.actionButton{
+    color: white;
+    background-color: crimson;
+    border: black solid 2px;
+    border-radius: 45%;
 }

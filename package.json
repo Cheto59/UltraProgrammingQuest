@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "jspython-interpreter": "^2.1.13"
+    "jspython-interpreter": "^2.1.13",
+    "monaco-editor": "^0.35.0"
   }
 }

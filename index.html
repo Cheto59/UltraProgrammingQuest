@@ -4,15 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" href="styles/styles.css">
     <title>Document</title>
 </head>
 <body>
 
-    <div class = "container">
-        <textarea name="codeEditor" id="codeEditor" cols="120" rows="40"></textarea><br>
+    <div class="problemCreator">
+        <input type="text" id="nameInput"><br>
+        <textarea name="Description" id="descriptionTextArea" cols="30" rows="10" ></textarea><br>
+        <button class="actionButton" id="addProblemButton">Add</button>
+    </div>
+
+
+    <div class = "mainContainer">
+        <div id="codeEditor" style="width: 800px; height: 500px; border: 1px solid grey"></div>
+        <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+        <textarea name="" id="console" cols="105" rows="4" disabled="true" spellcheck="false"></textarea>
         <button id="runButton" class="actionButton">Run</button>
     </div>
+
+    <div class="problemSelector">
+        <select name="ProblemSelector" id="problemSelect"></select>
+    </div>
+    
     <script type="module" src="dist/index.js"></script>
 </body>
 </html>
