@@ -32,7 +32,7 @@
 
     <script type="text/python"  id="executeCode">
         from browser import document, alert, load, window
-        load("../node_modules/monaco-editor/min/vs/loader.js")
+        load("./node_modules/monaco-editor/min/vs/loader.js")
 
         def callEdtorScript(event):
             exec(window.monaco.editor.getModels()[0].getValue())
