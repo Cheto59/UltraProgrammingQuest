@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="styles/styles.css">
     <title>Document</title>
 </head>
-<body>
-
+<body onload="brython()">
     <div class="problemCreator">
         <input type="text" id="nameInput" placeholder="Problem name"><br>
         <textarea name="Description" id="descriptionTextArea" placeholder="Enter the problem description"></textarea><br>
@@ -30,7 +29,21 @@
         <select name="ProblemSelector" id="problemSelect"><option value="">Select One Problem …</option></select><br>
         <textarea name="ProblemTextArea" id="problemTextArea" disabled="true" spellcheck="false"></textarea>
     </div>
+
+    <script type="text/python"  id="executeCode">
+        from browser import document, alert, load, window
+        load("../node_modules/monaco-editor/min/vs/loader.js")
+
+        def callEdtorScript(event):
+            exec(window.monaco.editor.getModels()[0].getValue())
+            
+        document["runButton"].bind("click", callEdtorScript)
+    </script>
     
     <script type="module" src="dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
+    </script>
 </body>
 </html>

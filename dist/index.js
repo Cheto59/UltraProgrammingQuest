@@ -1,4 +1,3 @@
-import { jsPython } from "../node_modules/jspython-interpreter/dist/jspython-interpreter.esm.js";
 
 class Problem {
 
@@ -52,13 +51,7 @@ require(['vs/editor/editor.main'], function () {
     
 
 function onRun(){
-    const console = document.getElementById("console")
-    const script = monaco.editor.getModels()[0].getValue()
-    const interpreter = jsPython()
-    interpreter.evaluate(script).then(
-        res => {console.value = res},
-        err => {console.value = err})
-    localStorage.setItem("lastScript",script)
+    console.log(console.log.bind(console))
 }
 
 function onAddProblem(){
