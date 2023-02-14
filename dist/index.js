@@ -1,5 +1,3 @@
-import { jsPython } from "../node_modules/jspython-interpreter/dist/jspython-interpreter.esm.js";
-
 class Problem {
 
     constructor(name,description,testCasesFile){
@@ -51,15 +49,15 @@ require(['vs/editor/editor.main'], function () {
 // problems.forEach(problem => loadProblem(problem))
     
 
-function onRun(){
-    const console = document.getElementById("console")
-    const script = monaco.editor.getModels()[0].getValue()
-    const interpreter = jsPython()
-    interpreter.evaluate(script).then(
-        res => {console.value = res},
-        err => {console.value = err})
-    localStorage.setItem("lastScript",script)
-}
+// function onRun(){
+//     const console = document.getElementById("console")
+//     const script = monaco.editor.getModels()[0].getValue()
+//     const interpreter = jsPython()
+//     interpreter.evaluate(script).then(
+//         res => {console.value = res},
+//         err => {console.value = err})
+//     localStorage.setItem("lastScript",script)
+// }
 
 function onAddProblem(){
     const name = document.getElementById("nameInput").value
@@ -77,6 +75,41 @@ function onAddProblem(){
     }else alert("No has seleccionado un archivo o el tipo de archivo no es el indicado para los casos de prueba")     
 }
 
-document.getElementById("runButton").addEventListener('click', onRun)
+// output functions are configurable.  This one just appends some text
+// to a pre element.
+function outf(text) { 
+    var console = document.getElementById("console"); 
+    console.value+= text; 
+} 
+function builtinRead(x) {
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+            throw "File not found: '" + x + "'";
+    return Sk.builtinFiles["files"][x];
+}
+
+// Here's everything you need to run a python program in skulpt
+// grab the code from your textarea
+// get a reference to your pre element for output
+// configure the output function
+// call Sk.importMainWithBody()
+function runit() { 
+   var prog = monaco.editor.getModels()[0].getValue()
+   const console = document.getElementById("console")
+   if(console.value.trim() !== "") console.value+= "\n----------------------------------\n\n"  
+   Sk.pre = "output";
+   Sk.configure({output:outf, read:builtinRead}); 
+   (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+   var myPromise = Sk.misceval.asyncToPromise(function() {
+       return Sk.importMainWithBody("<stdin>", false, prog, true);
+   });
+   myPromise.then(function(mod) {
+       console.log('success');
+   },
+       function(err) {
+       console.log(err.toString());
+   });
+}
+
+document.getElementById("runButton").addEventListener('click', runit)
 document.getElementById("addProblemButton").addEventListener('click',onAddProblem)
 document.getElementById("problemSelect").addEventListener('change', (event)=>{document.getElementById("problemTextArea").value = event.target.value})
