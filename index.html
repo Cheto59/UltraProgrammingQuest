@@ -10,21 +10,24 @@
 </head>
 <body onload="brython()">
     <div class="problemCreator">
-        <input type="text" id="nameInput"><br>
-        <textarea name="Description" id="descriptionTextArea" cols="30" rows="10" ></textarea><br>
+        <input type="text" id="nameInput" placeholder="Problem name"><br>
+        <textarea name="Description" id="descriptionTextArea" placeholder="Enter the problem description"></textarea><br>
+        <label for="testCasesSelector" id="testCasesSelectorLabel">Upload Test Cases</label>
+        <input type="file" id="testCasesSelector" accept=".txt" placeholder="Sin casos de prueba"> 
         <button class="actionButton" id="addProblemButton">Add</button>
     </div>
 
 
     <div class = "mainContainer">
         <div id="codeEditor" style="width: 800px; height: 500px; border: 1px solid grey"></div>
-        <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+        <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
         <textarea name="" id="console" cols="105" rows="4" disabled="true" spellcheck="false"></textarea>
         <button id="runButton" class="actionButton">Run</button>
     </div>
 
     <div class="problemSelector">
-        <select name="ProblemSelector" id="problemSelect"></select>
+        <select name="ProblemSelector" id="problemSelect"><option value="">Select One Problem …</option></select><br>
+        <textarea name="ProblemTextArea" id="problemTextArea" disabled="true" spellcheck="false"></textarea>
     </div>
 
     <script type="text/python"  id="executeCode">
