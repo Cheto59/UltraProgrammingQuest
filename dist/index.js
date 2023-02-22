@@ -44,21 +44,6 @@ require(['vs/editor/editor.main'], function () {
   });
 });
 
-// var localProblems = localStorage.getItem("problems")
-// if( localProblems != null) problems = localProblems
-// problems.forEach(problem => loadProblem(problem))
-    
-
-// function onRun(){
-//     const console = document.getElementById("console")
-//     const script = monaco.editor.getModels()[0].getValue()
-//     const interpreter = jsPython()
-//     interpreter.evaluate(script).then(
-//         res => {console.value = res},
-//         err => {console.value = err})
-//     localStorage.setItem("lastScript",script)
-// }
-
 function onAddProblem(){
     const name = document.getElementById("nameInput").value
     const testCasesFile = document.getElementById("testCasesSelector").files[0]

@@ -4,6 +4,11 @@ body{
     display: flex;  
 }
 
+.console{
+    resize: none;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
 
 /* Parte izquierda de la pagina */
 
@@ -59,23 +64,6 @@ input[type="file"] {
     margin: 0.5em;
     display: inline;
 }
-
-#console{
-    margin-top: 0.5em;
-    width: 50em;
-    resize: none;
-    background-color: black;
-    border-color: white;
-    color: white;
-}
-
-#runButton{
-    width: 80px;
-    position: relative;
-    top: -2em;
-    left: 1em;
-}
-
 
 /* Parte Derecha de la Pagina */
 
